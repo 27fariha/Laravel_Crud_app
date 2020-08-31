@@ -47,7 +47,7 @@ $emp->name=$request->input('name');
 $emp->gender=$request->input('gender');
 $emp->designation=$request->input('desig');
 $emp->save();
-        return redirect('/employee');
+        return redirect('/employee')->with('Insert_msg','Data Inserted Successfully');
     }
 
     /**
@@ -69,7 +69,9 @@ $emp->save();
      */
     public function edit($id)
     {
-        //
+        $emp =Employee::find($id);
+       // return $emp;
+       return view('/edit')->with('emp',$emp);
     }
 
     /**
@@ -81,7 +83,13 @@ $emp->save();
      */
     public function update(Request $request, $id)
     {
-        //
+        $emp=Employee::find($id);
+        $emp->name=$request->input('name');
+        $emp->gender=$request->input('gender');
+        $emp->designation=$request->input('desig');
+        $emp->save();
+
+return redirect('/employee')->with('Update_msg','Data Updated Successfully');
     }
 
     /**

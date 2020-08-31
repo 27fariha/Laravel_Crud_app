@@ -13,6 +13,8 @@
  <h2 align="center" >Employee Data</h2></div><br>
 
  <a href="{{action ('EmployeeController@create')}}" class="btn btn-outline-info"> Add Employee</a><br><br>
+@include('Alerts\message')
+   <br>
     <table border=1 align="center" class="table table-stripped table-hover">
 
     <tr> 
@@ -20,6 +22,7 @@
     <th>Name</th>
     <th>Gender</th>
     <th>Designation</th>
+    <th>Edit</th>
     </tr>
 
     @foreach($emp as $e)
@@ -28,8 +31,10 @@
     <td>{{$e['name']}}</td>
     <td>{{$e['gender']}}</td>
     <td>{{$e['designation']}}</td>
+    <td>
+    <a href="employee/{{$e['id']}}/edit" class="btn btn-info text-center">Edit</a>
+    </td>
     </tr>
-
     @endforeach
     </table>
     {{$emp->links() }}
