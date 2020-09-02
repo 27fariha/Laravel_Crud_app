@@ -100,6 +100,8 @@ return redirect('/employee')->with('Update_msg','Data Updated Successfully');
      */
     public function destroy($id)
     {
-        //
+        $emp = Employee::find($id);
+        $emp->delete();
+        return redirect('/employee')->with('delete_msg','Data Deleted Successfully');;
     }
 }
